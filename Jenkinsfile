@@ -18,16 +18,23 @@ pipeline {
 			}
 		
 		}
+		
+		stage ("Container Orchestration"){
+			steps {
+				sh label: '',
+				script: ' ./startup.sh -i tungstenfabric/developer-sandbox -t r5.1'
+			}
+		}
 		stage ("Updating tpc.repo.template") {
 			steps {
 				sh label: '',
 				script: '''cat <<EOF> tpc.repo.template
 				[contrail-tpc]
 				name=Third partiey for Contrail
-                		bayeurl=http://148.251.5.90/tpc-R5.1/
-                		enabled=1
-                		gpgcheck=0
-                		EOF'''
+                bayeurl=http://148.251.5.90/tpc-R5.1/
+                enabled=1
+                gpgcheck=0
+                EOF'''
 			
 			}
 		}
