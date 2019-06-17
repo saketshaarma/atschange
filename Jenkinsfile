@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	parameters {
         choice(
-            name: 'BRANCH',
+            name: 'v5.1',
             choices: 'master',
             description: 'Selct the branch to deploy to repective Airflow')
     }
