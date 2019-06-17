@@ -1,6 +1,6 @@
 pipeline {
 	environment {
-	branch_name=v5.1
+	branch_name="v5.1"
 	image_name='tungstenfabric/developer-sandbox'
 	image_tag='r5.1'
 	}
@@ -9,7 +9,7 @@ pipeline {
 		stage ("SCM CHECKOUT") {
 			steps {
 				checkout([$class: 'GitSCM',
-					  branches: [[name: '*/${branch_name}']],
+					  branches: [[name: '*/${env.branch_name}']],
 						doGenerateSubmoduleConfigurations: false,
 						extensions: [], submoduleCfg: [],
 						userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
