@@ -9,5 +9,7 @@ pipeline {
 						extensions: [], submoduleCfg: [],
 						userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
 			}
+	}
 
+	}
 }
