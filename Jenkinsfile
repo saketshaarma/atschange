@@ -1,11 +1,5 @@
 pipeline {
 	agent any
-	parameters {
-        choice(
-            name: 'BRANCH',
-            choices: 'refs/tags/v5.1',
-            description: 'Selct the branch to deploy to repective Airflow')
-    }
 	stages {
 		stage ("SCM CHECKOUT") {
 			steps {
