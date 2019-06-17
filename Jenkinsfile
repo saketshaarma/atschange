@@ -1,6 +1,6 @@
 pipeline {
 	environment {
-	branch_name='v5.1'
+	branch_name=v5.1
 	image_name='tungstenfabric/developer-sandbox'
 	image_tag='r5.1'
 	}
