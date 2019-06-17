@@ -3,7 +3,7 @@ pipeline {
 	parameters {
         choice(
             name: 'BRANCH',
-            choices: 'master\nv5.1',
+            choices: 'master\nrelease/v5.1\nR5.0',
             description: 'Selct the branch to deploy to repective Airflow')
     }
 	stages {
