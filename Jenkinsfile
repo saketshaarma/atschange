@@ -10,13 +10,11 @@ pipeline {
 				userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
 			}
 	}
-		stage ("Getting Git hash"){
-			steps {
-				def getCommitSha(){
-					return sh(returnStdout: true, script: 'git rev-parse HEAD')
-				}
-			}
-		}
 
 	}
+}
+
+
+def getCommitSha(){
+	return sh(returnStdout: true, script: 'git rev-parse HEAD')
 }
