@@ -8,6 +8,7 @@ pipeline {
 				doGenerateSubmoduleConfigurations: false,
 				extensions: [], submoduleCfg: [],
 				userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
+				getCommitSha
 			}
 	}
 
