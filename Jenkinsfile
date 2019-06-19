@@ -46,26 +46,5 @@ pipeline {
 			}
 		}
 		
-		stage ("Build Step make sync") {
-			steps {
-				sh label: '',
-				script: ' docker exec contrail-developer-sandbox bash -c \'set -x; \
-				cd /root/contrail-dev-env; \
-				make sync; \
-				make fetch_packages; \
-				make setup; \
-				make dep; \
-				export SRCVER=r5.1; \
-				export BUILDTAG=1; \
-				make rpm;\''
-			
-			}
-		}
-
 	}
-}
-
-
-def getCommitSha(){
-	return sh(returnStdout: true, script: 'git rev-parse HEAD')
 }
