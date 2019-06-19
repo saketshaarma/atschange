@@ -8,7 +8,7 @@ pipeline {
 		stage ("SCM CHECKOUT") {
 			steps {
 				checkout([$class: 'GitSCM',
-				branches: [[name: ${BRANCH}]],
+				branches: [[name: '${BRANCH}']],
 				doGenerateSubmoduleConfigurations: false,
 				extensions: [], submoduleCfg: [],
 				userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
