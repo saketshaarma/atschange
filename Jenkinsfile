@@ -1,10 +1,14 @@
+def CONTRAIL_VERSION="r5.1"
+def BRANCH="R5.1"
+image_name="tungstenfabric/developer-sandbox"
+image_tag="r5.1
 pipeline {
 	agent any
 	stages {
 		stage ("SCM CHECKOUT") {
 			steps {
 				checkout([$class: 'GitSCM',
-				branches: [[name: "${params.BRANCH}"]],
+				branches: [[name: "${BRANCH}"]],
 				doGenerateSubmoduleConfigurations: false,
 				extensions: [], submoduleCfg: [],
 				userRemoteConfigs: [[url: 'https://github.com/Juniper/contrail-dev-env.git']]])
@@ -13,8 +17,8 @@ pipeline {
 		stage ("Sandbox Image"){
 			steps {
 			sh label: '',
-			script: 'cd container; \
-			docker build --build-arg BRANCH=master --no-cache --tag tungstenfabric/developer-sandbox:r5.1 .'
+			script: "cd container; \
+				docker build --build-arg BRANCH=master --no-cache --tag ${image_name}:${image_tag} ."
 			}
 		
 		}
@@ -22,7 +26,7 @@ pipeline {
 		stage ("Container Orchestration"){
 			steps {
 				sh label: '',
-				script: ' ./startup.sh -i tungstenfabric/developer-sandbox -t r5.1'
+				script: " ./startup.sh -i ${image_name} -t ${image_tag}"
 			}
 		}
 		stage ("Updating tpc.repo.template") {
